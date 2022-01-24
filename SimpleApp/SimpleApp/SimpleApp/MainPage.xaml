@@ -2,13 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleApp.MainPage"
-             BackgroundColor="LightCyan">
+             BackgroundColor="Black">
 
-    <StackLayout VerticalOptions="CenterAndExpand" Margin="20" Spacing="20">
-        <Entry x:Name="UsernameEntry" Placeholder="Username" FontSize="25"/>
-        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" FontSize="25"/>
-        <Button Clicked="Button_Clicked"  BackgroundColor="Blue" TextColor="White" CornerRadius="10" Text="Login"/>
-        <Label x:Name="LoginLabel" IsVisible="False" HorizontalOptions="Center"/>
-    </StackLayout>
+    <Grid Margin="10" ColumnSpacing="1" RowSpacing="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"
+               FontSize="90" 
+               Grid.Column="0" 
+               Grid.ColumnSpan="4" 
+               HorizontalTextAlignment="End" 
+               TextColor="White"
+               VerticalOptions="CenterAndExpand"
+               MaxLines="3"
+               Text="42"/>
+        <Button Grid.Row="1" FontSize="22" Grid.Column="0" TextColor="White" Grid.ColumnSpan="2" BackgroundColor="Orange" Text="C"/>
+        <Button Grid.Row="1" FontSize="22" Grid.Column="2" TextColor="White" Grid.ColumnSpan="2" BackgroundColor="Orange" Text="Back"/>
+        <Button Grid.Row="2" FontSize="22" Grid.Column="3" TextColor="White" BackgroundColor="Orange" Text="/"/>
+        <Button Grid.Row="2" FontSize="45" Grid.Column="0" BackgroundColor="White" Text="7" />
+        <Button Grid.Row="2" FontSize="45" Grid.Column="1" BackgroundColor="White" Text="8"/>
+        <Button Grid.Row="2" FontSize="45" Grid.Column="2" BackgroundColor="White" Text="9" />
+        <Button Grid.Row="3" FontSize="45" Grid.Column="3" TextColor="White" BackgroundColor="Orange" Text="*"/>
+        <Button Grid.Row="3" FontSize="45" Grid.Column="0" BackgroundColor="White" Text="4"/>
+        <Button Grid.Row="3" FontSize="45" Grid.Column="1" BackgroundColor="White" Text="5"/>
+        <Button Grid.Row="3" FontSize="45" Grid.Column="2" BackgroundColor="White" Text="6"/>
+        <Button Grid.Row="4" FontSize="45" Grid.Column="3" TextColor="White" BackgroundColor="Orange" Text="-" />
+        <Button Grid.Row="4" FontSize="45" Grid.Column="0" BackgroundColor="White" Text="1"/>
+        <Button Grid.Row="4" FontSize="45" Grid.Column="1" BackgroundColor="White" Text="2"/>
+        <Button Grid.Row="4" FontSize="45" Grid.Column="2" BackgroundColor="White" Text="3" />
+        <Button Grid.Row="5" FontSize="45" Grid.Column="3" TextColor="White" BackgroundColor="Orange" Text="+" />
+        <Button Grid.Row="5" FontSize="45" Grid.Column="0" BackgroundColor="White" Text="0"/>
+        <Button Grid.Row="5" FontSize="45" Grid.Column="1" TextColor="White" BackgroundColor="Orange" Text="." />
+        <Button Grid.Row="5" FontSize="45" Grid.Column="2" TextColor="White" BackgroundColor="Orange" Text="="/>
+    </Grid>
 
 </ContentPage>
