@@ -3,7 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleApp.MainPage">
 
-    <StackLayout>
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Padding" Value="8" />
+        </Style>
+        <Style TargetType="Frame" x:Key="SentMessageFrameStyle">
+            <Setter Property="BackgroundColor" Value="#d7f0ff"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="Margin" Value="30,0,0,0" />
+
+        </Style>
+        <Style TargetType="Frame" x:Key="ReceivedMessageFrameStyle">
+            <Setter Property="BackgroundColor" Value="#eff6fb"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="Margin" Value="0,0,30,0" />
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout Padding="20" Spacing="40">
+        <Frame HorizontalOptions="Center" HasShadow="True" CornerRadius="15" Padding="8" Margin="30,0,30,0">
+            <StackLayout>
+                <Label Text="Messages sent by participants in this conversation are encrypted" FontSize="Small" HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </Frame>
+        <Frame Style="{StaticResource SentMessageFrameStyle}">
+            <StackLayout>
+                <Label Text="Remember my product idea? I have updates but it's sensitive." TextColor="Black" FontSize="Medium" />
+                <Label Text="09:28" FontSize="Small" HorizontalOptions="Start" />
+            </StackLayout>
+        </Frame>
+        <Frame Style="{StaticResource ReceivedMessageFrameStyle}">
+            <StackLayout>
+                <Label Text="Send them to me here. Everything's encrypted" TextColor="Black" FontSize="Medium" />
+                <Label Text="09:29" FontSize="Small" HorizontalOptions="End" />
+            </StackLayout>
+        </Frame>
+        <Frame Style="{StaticResource SentMessageFrameStyle}">
+            <StackLayout>
+                <Image Source="topsecret" />
+                <Label Text="09:30" FontSize="Small" HorizontalOptions="Start" />
+            </StackLayout>
+        </Frame>
     </StackLayout>
 
 </ContentPage>
