@@ -13,7 +13,7 @@
             <Setter Property="HorizontalOptions" Value="End"/>
             <Setter Property="CornerRadius" Value="15" />
             <Setter Property="Padding" Value="8" />
-            <Setter Property="Margin" Value="30,0,0,0" />
+            <Setter Property="Margin" Value="10,0,0,0" />
 
         </Style>
         <Style TargetType="Frame" x:Key="ReceivedMessageFrameStyle">
@@ -21,33 +21,53 @@
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="CornerRadius" Value="15" />
             <Setter Property="Padding" Value="8" />
-            <Setter Property="Margin" Value="0,0,30,0" />
+            <Setter Property="Margin" Value="0,0,10,0" />
         </Style>
     </ContentPage.Resources>
-    <StackLayout Padding="20" Spacing="40">
-        <Frame HorizontalOptions="Center" HasShadow="True" CornerRadius="15" Padding="8" Margin="30,0,30,0">
+    <Grid Padding="20" ColumnSpacing="10" RowSpacing="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" HasShadow="True" CornerRadius="15" Padding="8" Margin="30,0,30,0">
             <StackLayout>
                 <Label Text="Messages sent by participants in this conversation are encrypted" FontSize="Small" HorizontalTextAlignment="Center" />
             </StackLayout>
         </Frame>
-        <Frame Style="{StaticResource SentMessageFrameStyle}">
+        <Frame Grid.Row="1" Grid.Column="2" Padding="0" VerticalOptions="Center" HeightRequest="50" WidthRequest="50"  CornerRadius="50" >
+            <Image Aspect="AspectFit" Source="aperson" />
+        </Frame>
+        <Frame Grid.Row="1"  Grid.Column="1" Style="{StaticResource SentMessageFrameStyle}">
             <StackLayout>
                 <Label Text="Remember my product idea? I have updates but it's sensitive." TextColor="Black" FontSize="Medium" />
                 <Label Text="09:28" FontSize="Small" HorizontalOptions="Start" />
             </StackLayout>
         </Frame>
-        <Frame Style="{StaticResource ReceivedMessageFrameStyle}">
+        <Frame Grid.Row="2" Grid.Column="0" Padding="0" VerticalOptions="Center" HeightRequest="50" WidthRequest="50"  CornerRadius="50" >
+            <Image Aspect="AspectFit" Source="vperson" />
+        </Frame>
+        <Frame Grid.Row="2"  Grid.Column="1" Style="{StaticResource ReceivedMessageFrameStyle}">
             <StackLayout>
                 <Label Text="Send them to me here. Everything's encrypted" TextColor="Black" FontSize="Medium" />
                 <Label Text="09:29" FontSize="Small" HorizontalOptions="End" />
             </StackLayout>
         </Frame>
-        <Frame Style="{StaticResource SentMessageFrameStyle}">
+        <Frame Grid.Row="3" Grid.Column="2" Padding="0" VerticalOptions="Center" HeightRequest="50" WidthRequest="50"  CornerRadius="50" >
+            <Image Aspect="AspectFit" Source="aperson" />
+        </Frame>
+        <Frame Grid.Row="3"  Grid.Column="1" Style="{StaticResource SentMessageFrameStyle}">
             <StackLayout>
                 <Image Source="topsecret" />
                 <Label Text="09:30" FontSize="Small" HorizontalOptions="Start" />
             </StackLayout>
         </Frame>
-    </StackLayout>
+    </Grid>
 
 </ContentPage>
