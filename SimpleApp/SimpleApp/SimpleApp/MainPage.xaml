@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleApp.MainPage">
 
-    <StackLayout>
-    </StackLayout>
+    <Grid>
+        <BoxView BackgroundColor="DarkTurquoise"
+                 CornerRadius="10"
+                 WidthRequest="100" 
+                 HeightRequest="100" 
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center"/>
+    </Grid>
 
 </ContentPage>
