@@ -13,6 +13,7 @@ namespace SimpleApp
         public MainPage()
         {
             InitializeComponent();
+            //LogoImage.Source = ImageSource.FromResource("SimpleApp.Images.logo.png", typeof(MainPage).Assembly);
         }
     }
 }
