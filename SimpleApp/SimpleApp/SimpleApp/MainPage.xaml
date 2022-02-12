@@ -4,6 +4,12 @@
              x:Class="SimpleApp.MainPage">
 
     <StackLayout>
+        <Label x:Name="SwitchStateLabel" FontSize="50"/>
+        <Switch IsToggled="False" 
+                Toggled="Switch_Toggled" 
+                HorizontalOptions="Center" 
+                ThumbColor="Aqua" 
+                OnColor="Gold"/>
     </StackLayout>
 
 </ContentPage>
