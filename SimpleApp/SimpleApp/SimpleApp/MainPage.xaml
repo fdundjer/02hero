@@ -4,6 +4,16 @@
              x:Class="SimpleApp.MainPage">
 
     <StackLayout>
+        <Label x:Name="StepperValueLabel" 
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Start"
+               BackgroundColor="Red"
+               FontSize="50"/>
+        <Stepper ValueChanged="Stepper_ValueChanged"
+                 HorizontalOptions="Center"
+                 Maximum="100" 
+                 Minimum="0" 
+                 Increment="10"/>
     </StackLayout>
 
 </ContentPage>
