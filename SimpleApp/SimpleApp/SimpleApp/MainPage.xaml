@@ -4,6 +4,16 @@
              x:Class="SimpleApp.MainPage">
 
     <StackLayout>
+        <Entry 
+            FontSize="50" 
+            Placeholder="Unesi svoje ime"
+            IsPassword="True"
+            Text="Random text"
+            ClearButtonVisibility="WhileEditing"
+            CursorPosition="1"
+            IsSpellCheckEnabled="True"
+            ReturnType="Send"
+            IsTextPredictionEnabled="True"/>
     </StackLayout>
 
 </ContentPage>
