@@ -3,7 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleApp.MainPage">
 
-    <StackLayout>
+    <StackLayout RadioButtonGroup.GroupName="">
+        <RadioButton Content="Macka" 
+                     GroupName="PrvaGrupa" 
+                     Value="Macka"/>
+        <RadioButton GroupName="PrvaGrupa" 
+                     Content="Pas"
+                     Value="Pas"/>
+        <RadioButton GroupName="DrugaGrupa" 
+                     IsChecked="True"
+                     Content="Zirafa"
+                     Value="Zirafa"/>
+        <RadioButton GroupName="DrugaGrupa" 
+                     Content="Krokodil"
+                     Value="Krokodil"/>
     </StackLayout>
 
 </ContentPage>
