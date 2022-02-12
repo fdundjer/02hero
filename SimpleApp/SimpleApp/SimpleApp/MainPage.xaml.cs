@@ -14,5 +14,11 @@ namespace SimpleApp
         {
             InitializeComponent();
         }
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SliderValueLabel.Text = Math.Floor(e.NewValue).ToString();
+            (sender as Slider).Value = Math.Floor(e.NewValue);
+        }
     }
 }

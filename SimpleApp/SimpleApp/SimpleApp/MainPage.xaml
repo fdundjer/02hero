@@ -4,6 +4,14 @@
              x:Class="SimpleApp.MainPage">
 
     <StackLayout>
+        <Label x:Name="SliderValueLabel" FontSize="50"/>
+        <Slider Maximum="100" 
+                Minimum="0" 
+                Value="50"
+                ThumbColor="Red"
+                ValueChanged="Slider_ValueChanged"
+                MaximumTrackColor="DarkSeaGreen"
+                MinimumTrackColor="Violet"/>
     </StackLayout>
 
 </ContentPage>
