@@ -3,7 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleApp.MainPage">
 
-    <StackLayout>
-    </StackLayout>
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="NewStyle">
+            <Setter Property="FontSize" Value="50"/>
+        </Style>
+
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource NewStyle}" 
+               Grid.Row="0" Text="Random text"/>
+        <Label Style="{StaticResource SecondStyle}"
+               Grid.Row="1" Text="Random text"/>
+
+    </Grid>
 
 </ContentPage>
