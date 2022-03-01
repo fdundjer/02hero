@@ -13,12 +13,15 @@ namespace SimpleApp.ViewModels
     internal class MainViewModel : BaseViewModel
     {
         private ObservableCollection<NoteViewModel> _notesSource;
-        
+        private NoteViewModel _selectedNote;
+
         public MainViewModel()
         {
             AddNoteCommand = new Command(OnAddNoteCommand);
+            SelectedNoteChangedCommand = new Command(OnSelectedNoteChangedCommand);
             LoadNotes();
         }
+
 
         public ObservableCollection<NoteViewModel> NotesSource
         {
@@ -30,7 +33,22 @@ namespace SimpleApp.ViewModels
             }
         }
 
+        public NoteViewModel SelectedNote
+        {
+            get
+            {
+                return _selectedNote;
+            }
+            set
+            {
+                _selectedNote = value;
+                OnPropertyChanged(nameof(SelectedNote));
+            }
+        }
+
         public ICommand AddNoteCommand { get; }
+
+        public ICommand SelectedNoteChangedCommand { get; }
 
         private void LoadNotes()
         {
@@ -39,10 +57,23 @@ namespace SimpleApp.ViewModels
 
             foreach(var note in notes)
             {
-                notesViewModel.Add(new NoteViewModel(note));
+                notesViewModel.Add(new NoteViewModel(note, LoadNotes));
             }
 
             NotesSource = new ObservableCollection<NoteViewModel>(notesViewModel);
+        }
+
+        private void OnSelectedNoteChangedCommand()
+        {
+            if (SelectedNote != null)
+            {
+                Application.Current
+                   .MainPage
+                   .Navigation
+                   .PushModalAsync(new NoteView { BindingContext = SelectedNote });
+            }
+           
+            SelectedNote = null;
         }
 
         private void OnAddNoteCommand()
