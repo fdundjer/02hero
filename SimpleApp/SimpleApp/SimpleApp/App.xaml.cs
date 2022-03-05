@@ -18,7 +18,7 @@ namespace SimpleApp
             InitializeComponent();
             SetupServices();
 
-            MainPage = new MainPage { BindingContext = Locator.MainViewModel };
+            MainPage = new NavigationPage(new MainPage { BindingContext = Locator.MainViewModel });
         }
 
         internal static ViewModelLocator Locator

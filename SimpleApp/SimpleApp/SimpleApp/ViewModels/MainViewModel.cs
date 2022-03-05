@@ -59,7 +59,7 @@ namespace SimpleApp.ViewModels
 
         public ICommand SelectedNoteChangedCommand { get; }
 
-        private void LoadNotes()
+        public void LoadNotes()
         {
             var notesViewModel = new List<NoteItemViewModel>();
             var notes = _notesRepository.GetAllNotes();

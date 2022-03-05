@@ -1,7 +1,9 @@
 ﻿using SimpleApp.Models;
+using SimpleApp.ViewModels;
 using SimpleApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -22,6 +24,13 @@ namespace SimpleApp.Services
         public void GoBack()
         {
             Application.Current.MainPage.Navigation.PopModalAsync();
+
+            var lastView = Application.Current.MainPage.Navigation.NavigationStack.Last();
+            if (lastView is MainPage mainPage 
+                && mainPage.BindingContext is MainViewModel mainViewModel)
+            {
+                mainViewModel.LoadNotes();
+            }
         }
 
         public void NavigateToNewNoteEditor()
