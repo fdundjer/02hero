@@ -1,4 +1,6 @@
-﻿using SimpleApp.Models;
+﻿using SimpleApp.DataAccess;
+using SimpleApp.Models;
+using SimpleApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,32 +9,28 @@ using Xamarin.Forms;
 
 namespace SimpleApp.ViewModels
 {
-    internal class NoteViewModel : BaseViewModel
+    internal class NoteEditorViewModel : BaseViewModel
     {
-        private readonly Action _action;
+        private readonly INotesRepository _notesRepository;
+        private readonly INavigationService _navigationService;
+
         private string _title;
         private string _description;
         private Guid _noteId;
 
-        public NoteViewModel(Action action)
+        public NoteEditorViewModel(INotesRepository notesRepository, 
+            INavigationService navigationService)
         {
-            _action = action;
+            _notesRepository = notesRepository;
+            _navigationService = navigationService;
 
             IsNewNote = true;
             SaveNoteCommand = new Command(OnSaveNoteCommand);
             DeleteNoteCommand = new Command(OnDeleteNoteCommand);
         }
 
-        public NoteViewModel(Note note, Action action) : this(action)
-        {
-            _noteId = note.Id;
 
-            IsNewNote = false;
-            Title = note.Title;
-            Description = note.Description;
-        }
-
-        public bool IsNewNote { get; }
+        public bool IsNewNote { get; set; }
 
         public ICommand SaveNoteCommand { get; set; }
 
@@ -58,21 +56,26 @@ namespace SimpleApp.ViewModels
             }
         }
 
+        public void LoadNote(Note note)
+        {
+            _noteId = note.Id;
+
+            IsNewNote = false;
+            Title = note.Title;
+            Description = note.Description;
+        }
+
         private void OnDeleteNoteCommand()
         {
-            //App.NotesRepository.DeleteNote(_noteId);
-            Application.Current.MainPage.Navigation.PopModalAsync();
-
-            _action?.Invoke();
+            _notesRepository.DeleteNote(_noteId);
+            _navigationService.GoBack();
         }
 
         private void OnSaveNoteCommand()
         {
             var note = new Note(Title, Description);
-            //App.NotesRepository.AddNote(note);
-            Application.Current.MainPage.Navigation.PopModalAsync();
-
-            _action?.Invoke();
+            _notesRepository.AddNote(note);
+            _navigationService.GoBack();
         }
     }
 }

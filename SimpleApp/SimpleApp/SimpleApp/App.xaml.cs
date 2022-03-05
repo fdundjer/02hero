@@ -50,8 +50,9 @@ namespace SimpleApp
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddTransient<MainViewModel>();
-            serviceCollection.AddTransient<NoteViewModel>();
+            serviceCollection.AddTransient<NoteEditorViewModel>();
             serviceCollection.AddSingleton<INotesRepository, NotesRepository>();
+            serviceCollection.AddSingleton<INavigationService, NavigationService>();
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }

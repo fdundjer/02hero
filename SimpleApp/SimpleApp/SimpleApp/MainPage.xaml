@@ -16,7 +16,7 @@
             SelectionChangedCommand="{Binding SelectedNoteChangedCommand}"
             ItemsSource="{Binding NotesSource}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="viewmodels:NoteViewModel">
+                <DataTemplate x:DataType="viewmodels:NoteItemViewModel">
                     <StackLayout Padding="10">
                         <Label FontSize="30" 
                                LineBreakMode="TailTruncation" 

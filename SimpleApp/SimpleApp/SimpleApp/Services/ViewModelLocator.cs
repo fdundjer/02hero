@@ -18,7 +18,7 @@ namespace SimpleApp.Services
         public MainViewModel MainViewModel 
             => _serviceProvider.GetService<MainViewModel>();
 
-        public NoteViewModel NoteViewModel 
-            => _serviceProvider.GetService<NoteViewModel>();
+        public NoteEditorViewModel NoteEditorViewModel
+            => _serviceProvider.GetService<NoteEditorViewModel>();
     }
 }

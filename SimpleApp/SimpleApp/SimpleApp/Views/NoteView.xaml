@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:viewmodels="clr-namespace:SimpleApp.ViewModels" xmlns:converters="clr-namespace:SimpleApp.Converters"
              x:Class="SimpleApp.Views.NoteView"
-             x:DataType="viewmodels:NoteViewModel">
+             x:DataType="viewmodels:NoteEditorViewModel">
     <ContentPage.Resources>
         <converters:InvertedBooleanConverter x:Key="InvertedBooleanConverter"/>
     </ContentPage.Resources>

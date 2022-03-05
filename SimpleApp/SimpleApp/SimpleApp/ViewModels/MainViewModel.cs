@@ -1,4 +1,5 @@
 ﻿using SimpleApp.DataAccess;
+using SimpleApp.Services;
 using SimpleApp.Views;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,25 @@ namespace SimpleApp.ViewModels
     internal class MainViewModel : BaseViewModel
     {
         private readonly INotesRepository _notesRepository;
-        private ObservableCollection<NoteViewModel> _notesSource;
-        private NoteViewModel _selectedNote;
+        private readonly INavigationService _navigationService;
 
-        public MainViewModel(INotesRepository notesRepository)
+        private ObservableCollection<NoteItemViewModel> _notesSource;
+        private NoteItemViewModel _selectedNote;
+
+        public MainViewModel(
+            INotesRepository notesRepository, 
+            INavigationService navigation)
         {
             _notesRepository = notesRepository;
+            _navigationService = navigation;
+
             AddNoteCommand = new Command(OnAddNoteCommand);
             SelectedNoteChangedCommand = new Command(OnSelectedNoteChangedCommand);
             LoadNotes();
         }
 
 
-        public ObservableCollection<NoteViewModel> NotesSource
+        public ObservableCollection<NoteItemViewModel> NotesSource
         {
             get { return _notesSource; }
             set 
@@ -35,7 +42,7 @@ namespace SimpleApp.ViewModels
             }
         }
 
-        public NoteViewModel SelectedNote
+        public NoteItemViewModel SelectedNote
         {
             get
             {
@@ -54,25 +61,22 @@ namespace SimpleApp.ViewModels
 
         private void LoadNotes()
         {
-            var notesViewModel = new List<NoteViewModel>();
+            var notesViewModel = new List<NoteItemViewModel>();
             var notes = _notesRepository.GetAllNotes();
 
             foreach(var note in notes)
             {
-                notesViewModel.Add(new NoteViewModel(note, LoadNotes));
+                notesViewModel.Add(new NoteItemViewModel(note));
             }
 
-            NotesSource = new ObservableCollection<NoteViewModel>(notesViewModel);
+            NotesSource = new ObservableCollection<NoteItemViewModel>(notesViewModel);
         }
 
         private void OnSelectedNoteChangedCommand()
         {
             if (SelectedNote != null)
             {
-                Application.Current
-                   .MainPage
-                   .Navigation
-                   .PushModalAsync(new NoteView { BindingContext = SelectedNote });
+                _navigationService.NavigateToNoteEditor(SelectedNote.Note);
             }
            
             SelectedNote = null;
@@ -80,10 +84,7 @@ namespace SimpleApp.ViewModels
 
         private void OnAddNoteCommand()
         {
-            Application.Current
-                .MainPage
-                .Navigation
-                .PushModalAsync(new NoteView { BindingContext = new NoteViewModel(() => LoadNotes()) });
+            _navigationService.NavigateToNewNoteEditor();
         }
     }
 }
