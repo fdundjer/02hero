@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SimpleApp.DataAccess
 {
-    internal class NotesRepository
+    internal class NotesRepository : INotesRepository
     {
         private List<Note> _notes = new List<Note>();
 

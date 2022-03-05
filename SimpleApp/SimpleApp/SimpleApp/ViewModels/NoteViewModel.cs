@@ -60,7 +60,7 @@ namespace SimpleApp.ViewModels
 
         private void OnDeleteNoteCommand()
         {
-            App.NotesRepository.DeleteNote(_noteId);
+            //App.NotesRepository.DeleteNote(_noteId);
             Application.Current.MainPage.Navigation.PopModalAsync();
 
             _action?.Invoke();
@@ -69,7 +69,7 @@ namespace SimpleApp.ViewModels
         private void OnSaveNoteCommand()
         {
             var note = new Note(Title, Description);
-            App.NotesRepository.AddNote(note);
+            //App.NotesRepository.AddNote(note);
             Application.Current.MainPage.Navigation.PopModalAsync();
 
             _action?.Invoke();

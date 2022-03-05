@@ -4,9 +4,6 @@
              xmlns:viewmodels="clr-namespace:SimpleApp.ViewModels"
              x:Class="SimpleApp.MainPage"
              x:DataType="viewmodels:MainViewModel">
-    <ContentPage.BindingContext>
-        <viewmodels:MainViewModel/>
-    </ContentPage.BindingContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

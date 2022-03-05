@@ -12,11 +12,13 @@ namespace SimpleApp.ViewModels
 {
     internal class MainViewModel : BaseViewModel
     {
+        private readonly INotesRepository _notesRepository;
         private ObservableCollection<NoteViewModel> _notesSource;
         private NoteViewModel _selectedNote;
 
-        public MainViewModel()
+        public MainViewModel(INotesRepository notesRepository)
         {
+            _notesRepository = notesRepository;
             AddNoteCommand = new Command(OnAddNoteCommand);
             SelectedNoteChangedCommand = new Command(OnSelectedNoteChangedCommand);
             LoadNotes();
@@ -53,7 +55,7 @@ namespace SimpleApp.ViewModels
         private void LoadNotes()
         {
             var notesViewModel = new List<NoteViewModel>();
-            var notes = App.NotesRepository.GetAllNotes();
+            var notes = _notesRepository.GetAllNotes();
 
             foreach(var note in notes)
             {

@@ -21,7 +21,7 @@
                     Command="{Binding SaveNoteCommand}" 
                     Text="Save"/>
             <Button Grid.Row="2"
-                    IsVisible="{Binding IsNewNote, Converter={StaticRe`source InvertedBooleanConverter}}"
+                    IsVisible="{Binding IsNewNote, Converter={StaticResource InvertedBooleanConverter}}"
                     Command="{Binding DeleteNoteCommand}"
                     Text="Delete"/>
 
