@@ -13,24 +13,28 @@ namespace SimpleApp.ViewModels
     {
         private readonly INotesRepository _notesRepository;
         private readonly INavigationService _navigationService;
-
+        private readonly IClipboard _clipboardService;
         private string _title;
         private string _description;
         private Guid _noteId;
 
         public NoteEditorViewModel(INotesRepository notesRepository, 
-            INavigationService navigationService)
+            INavigationService navigationService, 
+            IClipboard clipboardService)
         {
             _notesRepository = notesRepository;
             _navigationService = navigationService;
+            _clipboardService = clipboardService;
 
             IsNewNote = true;
             SaveNoteCommand = new Command(OnSaveNoteCommand);
             DeleteNoteCommand = new Command(OnDeleteNoteCommand);
+            CopyNoteCommand = new Command(OnCopyNoteCommand);
         }
 
-
         public bool IsNewNote { get; set; }
+
+        public ICommand CopyNoteCommand { get; set; }
 
         public ICommand SaveNoteCommand { get; set; }
 
@@ -63,6 +67,11 @@ namespace SimpleApp.ViewModels
             IsNewNote = false;
             Title = note.Title;
             Description = note.Description;
+        }
+
+        private void OnCopyNoteCommand()
+        {
+            _clipboardService.SetText($"{Title}{Environment.NewLine}{Description}");
         }
 
         private void OnDeleteNoteCommand()
