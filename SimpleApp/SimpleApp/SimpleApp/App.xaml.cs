@@ -49,10 +49,12 @@ namespace SimpleApp
         private void SetupServices()
         {
             var serviceCollection = new ServiceCollection();
+            serviceCollection.AddHttpClient();
             serviceCollection.AddTransient<MainViewModel>();
             serviceCollection.AddTransient<NoteEditorViewModel>();
             serviceCollection.AddSingleton<INotesRepository, NotesRepository>();
             serviceCollection.AddSingleton<INavigationService, NavigationService>();
+            serviceCollection.AddSingleton<IRecipeRestService, HttpRecipeRestService>();
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }
